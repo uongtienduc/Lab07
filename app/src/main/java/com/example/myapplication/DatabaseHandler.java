@@ -83,6 +83,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return contact;
     }
 
+    public ArrayList<Contact> getAllData() {
+        ArrayList<Contact> contactlist = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_CONTACTS,null);
+
+        while(res.moveToNext()) {
+            String id = res.getString(0);   //0 is the number of id column in your database table
+            String name = res.getString(1);
+            String phonenumber = res.getString(2);
+            Contact newDog = new Contact(id, name, phonenumber);
+            contactlist.add(newDog);
+        }
+        return contactlist;
+    }
+
     // code to get all contacts in a list view
     public List<Contact> getAllContacts() {
         List<Contact> contactList = new ArrayList<Contact>();

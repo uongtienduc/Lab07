@@ -4,14 +4,14 @@ public class Contact {
     int _id;
     String _name;
     String _phone_number;
-    public Contact(){   }
+    public Contact(String id, String name, String phonenumber){   }
     public Contact(int id, String name, String _phone_number){
         this._id = id;
         this._name = name;
         this._phone_number = _phone_number;
     }
 
-    public Contact(String name, String _phone_number){
+    public Contact(){
         this._name = name;
         this._phone_number = _phone_number;
     }
