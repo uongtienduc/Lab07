@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.Attributes;
 
@@ -70,10 +72,18 @@ public class MainActivity extends AppCompatActivity {
                     // Writing Contacts to log
                     Log.d("Name: ", log);
                 }
-
             }
         });
 
+        public void fillListview() {
+            ListView myListview = findViewById(R.id.listName);
+            DatabaseHandler dbhelper = new DatabaseHandler(this);
+
+            ArrayList<Contact> contactList = dbhelper.getAllData();
+
+            Adapter myAdapter = new Adapter(contactList, this);
+            myListview.setAdapter(myAdapter);
+        }
 
     }
 }
